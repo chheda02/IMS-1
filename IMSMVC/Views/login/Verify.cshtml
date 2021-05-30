@@ -4,28 +4,37 @@
     ViewBag.Title = "Verify";
 }
 
-<h2>Verify</h2>
+<div style="height:65vh;">
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>verify</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.otp, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.otp, new { htmlAttributes = new { @class = "form-control" } })
+    <div class="card border-info mx-auto mb-3 shadow " style="max-width: 30rem; margin-top:90px">
+
+        <div class="card-header"><h4>Verify</h4></div>
+
+        <div class="card-body mx-auto">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="text-success">
+                    <strong>OTP sent</strong> on your E-mail ID!
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                        </div>
+                        @Html.EditorFor(model => model.otp, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter OTP" } })
+                    </div>
+                </div>
                 @Html.ValidationMessageFor(model => model.otp, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Verify" class="btn btn-outline-primary btn-block" />
+                </div>
+
+            }
         </div>
     </div>
-}
+</div>
