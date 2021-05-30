@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSAPI", "IMSAPI\IMSAPI.csproj", "{8723E89B-4FED-4373-B2E9-0B3119A1E8AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSMVC", "IMSMVC\IMSMVC.csproj", "{9A95599B-BE75-4A65-A0C0-12CE4DBD4261}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8723E89B-4FED-4373-B2E9-0B3119A1E8AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8723E89B-4FED-4373-B2E9-0B3119A1E8AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8723E89B-4FED-4373-B2E9-0B3119A1E8AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8723E89B-4FED-4373-B2E9-0B3119A1E8AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A95599B-BE75-4A65-A0C0-12CE4DBD4261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A95599B-BE75-4A65-A0C0-12CE4DBD4261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A95599B-BE75-4A65-A0C0-12CE4DBD4261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A95599B-BE75-4A65-A0C0-12CE4DBD4261}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0514450-7A4D-4CA2-8B3E-2FD4EA8BBE82}
+	EndGlobalSection
+EndGlobal
