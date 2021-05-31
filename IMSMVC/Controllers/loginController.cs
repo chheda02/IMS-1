@@ -13,7 +13,7 @@ namespace IMSMVC.Controllers
 {
     public class loginController : Controller
     {
-        public bool SendEmailRegistered(string EmailId, int UserId)
+        public void SendEmailRegistered(string EmailId, int UserId)
         {
             var fromEmail = new MailAddress("d643359@gmail.com", "IMS");
             var toEmail = new MailAddress(EmailId);
@@ -22,7 +22,7 @@ namespace IMSMVC.Controllers
             string subject = "";
             string body = "";
 
-            subject = "Email Verification";
+            subject = "Successful Registration";
             body = "<br/><br/>We are excited to tell you that your IMS account is registered" +
                     "Your UserId is " + UserId +
                     " <br/><br/>";
@@ -46,10 +46,42 @@ namespace IMSMVC.Controllers
                 IsBodyHtml = true
             })
                 smtp.Send(message);
-            return true;
         }
         public ActionResult Index()
         {
+            User user1 = new User();
+            user1 = (User)Session["user"];
+            IEnumerable<User> users = null;
+
+            using (var client1 = new HttpClient())
+            {
+
+                client1.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask1 = client1.GetAsync("USERS");
+                responseTask1.Wait();
+
+                //To store result of web api response.   
+                var result1 = responseTask1.Result;
+
+                //If success received   
+                if (result1.IsSuccessStatusCode)
+                {
+                    var readTask1 = result1.Content.ReadAsAsync<IList<User>>();
+                    readTask1.Wait();
+                    users = readTask1.Result;
+                    int UserId = 0;
+                    foreach (var item in users)
+                    {
+                        if (item.Name == user1.Name && item.Password == user1.Password && item.PhoneNumber == user1.PhoneNumber && item.Email == user1.Email && user1.Gender == item.Gender && item.Address == user1.Address)
+                        {
+                            UserId = item.Id;
+                        }
+                    }
+                    SendEmailRegistered(user1.Email, UserId);
+                }
+            }
+
             return View();
         }
         public bool SendEmail(string EmailId, int otp)
@@ -90,6 +122,7 @@ namespace IMSMVC.Controllers
         // GET: login
         public ActionResult Verify()
         {
+
             return View();
         }
         [HttpPost]

@@ -3,5 +3,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Your account is refistered successfully. your userid is sent to registered email</h2>
 
+<div class="col-md-12 ">
+    <div class="form-group">
+        <input type="button" value="Login" class="btn btn-outline-primary btn-block" onclick="@("window.location.href='" + @Url.Action("Login", "Login") + "'");" />
+    </div>
+</div>
