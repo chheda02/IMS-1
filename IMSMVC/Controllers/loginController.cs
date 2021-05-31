@@ -215,7 +215,7 @@ namespace IMSMVC.Controllers
                 }
                 else if (users.RoleId == 2)
                 {
-
+                    return RedirectToAction("Home", "Admin");
                 }
             }
             else

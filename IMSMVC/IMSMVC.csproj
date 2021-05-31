@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyPolicies.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Policies.cs" />
     <Compile Include="Models\Role.cs" />
@@ -172,6 +173,11 @@
     <Content Include="Views\login\Index.cshtml" />
     <Content Include="Views\login\Login.cshtml" />
     <Content Include="Views\Customer\Home.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Home.cshtml" />
+    <Content Include="Views\Admin\ViewUsers.cshtml" />
+    <Content Include="Views\Admin\EditUsers.cshtml" />
+    <Content Include="Views\Admin\DeleteUsers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
