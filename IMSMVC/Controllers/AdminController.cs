@@ -160,5 +160,23 @@ namespace IMSMVC.Controllers
                 }
             }
         }
+        public ActionResult DetailsUsers(int Id)
+        {
+            User users = new User();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("USERS/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<User>();
+                    readTask.Wait();
+                    users = readTask.Result;
+                }
+            }
+            return View(users);
+        }
     }
 }

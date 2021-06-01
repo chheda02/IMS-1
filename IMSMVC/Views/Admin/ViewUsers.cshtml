@@ -7,9 +7,6 @@
 
 <h2>ViewUsers</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -66,9 +63,9 @@
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditUser", new { Id=item.Id }) |
-            @Html.ActionLink("Details", "DetailsUser", new { Id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteUser", new { Id=item.Id })
+            @Html.ActionLink("Edit", "EditUsers", new { Id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsUsers", new { Id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteUsers", new { Id=item.Id })
         </td>
     </tr>
 }
