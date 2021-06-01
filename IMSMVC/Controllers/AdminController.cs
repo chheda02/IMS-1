@@ -99,7 +99,7 @@ namespace IMSMVC.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:54109/api/");
 
-                var responseTask = client.PutAsJsonAsync("USERS/"+user.Id,user);
+                var responseTask = client.PutAsJsonAsync("USERS/" + user.Id, user);
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -252,7 +252,7 @@ namespace IMSMVC.Controllers
         }
         [HttpPost]
         public ActionResult CreatePolicies(Policies policy)
-        {  
+        {
             DateTime currentDateTime = DateTime.Now;
             policy.CreatedDate = currentDateTime;
             using (var client = new HttpClient())
@@ -273,7 +273,7 @@ namespace IMSMVC.Controllers
             }
         }
         [HttpGet]
-        public ActionResult DeletePolicies (int Id)
+        public ActionResult DeletePolicies(int Id)
         {
             Policies policy = new Policies();
             using (var client = new HttpClient())
@@ -292,7 +292,7 @@ namespace IMSMVC.Controllers
             return View(policy);
         }
         [HttpPost]
-        public ActionResult DeletePolicies (Policies policy)
+        public ActionResult DeletePolicies(Policies policy)
         {
             using (var client = new HttpClient())
             {
@@ -315,7 +315,7 @@ namespace IMSMVC.Controllers
                 }
             }
         }
-        public ActionResult DetailsPolicies (int Id)
+        public ActionResult DetailsPolicies(int Id)
         {
             Policies policy = new Policies();
             using (var client = new HttpClient())
@@ -332,6 +332,154 @@ namespace IMSMVC.Controllers
                 }
             }
             return View(policy);
+        }
+        public ActionResult ViewFeedbacks()
+        {
+            IEnumerable<Feedback> feedbacks = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("Feedbacks");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<Feedback>>();
+                    readTask.Wait();
+                    feedbacks = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    feedbacks = Enumerable.Empty<Feedback>();
+                }
+
+                return View(feedbacks);
+            }
+        }
+        [HttpGet]
+        public ActionResult DeleteFeedbacks(int Id)
+        {
+            Feedback feedback = new Feedback();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("Feedbacks/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Feedback>();
+                    readTask.Wait();
+                    feedback = readTask.Result;
+                }
+            }
+            return View(feedback);
+        }
+        [HttpPost]
+        public ActionResult DeleteFeedbacks(Feedback feedback)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.DeleteAsync("Feedbacks/" + feedback.Id);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Feedback>();
+                    readTask.Wait();
+
+                    return RedirectToAction("ViewFeedbacks");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        public ActionResult ViewComplaints()
+        {
+            IEnumerable<Complaint> complaints = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("Complaints");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<Complaint>>();
+                    readTask.Wait();
+                    complaints = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    complaints = Enumerable.Empty<Complaint>();
+                }
+
+                return View(complaints);
+            }
+        }
+        [HttpGet]
+        public ActionResult DeleteComplaints(int Id)
+        {
+            Complaint complaint = new Complaint();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("Complaints/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Complaint>();
+                    readTask.Wait();
+                    complaint = readTask.Result;
+                }
+            }
+            return View(complaint);
+        }
+        [HttpPost]
+        public ActionResult DeleteComplaints(Complaint complaint)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.DeleteAsync("Complaints/" + complaint.Id);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Complaint>();
+                    readTask.Wait();
+
+                    return RedirectToAction("ViewComplaints");
+                }
+                else
+                {
+                    return View();
+                }
+            }
         }
     }
 }

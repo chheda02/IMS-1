@@ -134,6 +134,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BuyPolicies.cs" />
+    <Compile Include="Models\Complaint.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Policies.cs" />
     <Compile Include="Models\Role.cs" />
@@ -184,6 +186,10 @@
     <Content Include="Views\Admin\CreatePolicies.cshtml" />
     <Content Include="Views\Admin\DeletePolicies.cshtml" />
     <Content Include="Views\Admin\DetailsPolicies.cshtml" />
+    <Content Include="Views\Admin\ViewFeedback.cshtml" />
+    <Content Include="Views\Admin\DeleteFeedbacks.cshtml" />
+    <Content Include="Views\Admin\ViewComplaints.cshtml" />
+    <Content Include="Views\Admin\DeleteComplaints.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
