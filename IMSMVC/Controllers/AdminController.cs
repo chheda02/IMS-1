@@ -99,10 +99,6 @@ namespace IMSMVC.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:54109/api/");
 
-                //var str = $"{{\"BookRequestId\":\"{bookRequest.BookRequestId}\",\"RequestStatus\":\"{status}\",\"BookId\":\"{bookRequest.BookId}\",\"StudentId\":\"{bookRequest.StudentId}\"}}";
-                //HttpContent content = new StringContent(str, Encoding.UTF8, "application/json");
-
-                //var responseTask = client.PutAsync("BookRequests/" + bookRequest.BookRequestId, content);
                 var responseTask = client.PutAsJsonAsync("USERS/"+user.Id,user);
                 responseTask.Wait();
 
@@ -177,6 +173,165 @@ namespace IMSMVC.Controllers
                 }
             }
             return View(users);
+        }
+        public ActionResult ViewPolicies()
+        {
+            IEnumerable<Policies> policy = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("Policies");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<Policies>>();
+                    readTask.Wait();
+                    policy = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    policy = Enumerable.Empty<Policies>();
+                }
+
+                return View(policy);
+            }
+        }
+        [HttpGet]
+        public ActionResult EditPolicies(int Id)
+        {
+            Policies policy = new Policies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("Policies/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Policies>();
+                    readTask.Wait();
+                    policy = readTask.Result;
+                }
+            }
+            return View(policy);
+        }
+        [HttpPost]
+        public ActionResult EditPolicies(Policies policy)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.PutAsJsonAsync("Policies/" + policy.Id, policy);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ViewPolicies", "Admin");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult CreatePolicies()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreatePolicies(Policies policy)
+        {  
+            DateTime currentDateTime = DateTime.Now;
+            policy.CreatedDate = currentDateTime;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("Policies", policy);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ViewPolicies", "Admin");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult DeletePolicies (int Id)
+        {
+            Policies policy = new Policies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("Policies/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Policies>();
+                    readTask.Wait();
+                    policy = readTask.Result;
+                }
+            }
+            return View(policy);
+        }
+        [HttpPost]
+        public ActionResult DeletePolicies (Policies policy)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.DeleteAsync("Policies/" + policy.Id);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Policies>();
+                    readTask.Wait();
+
+                    return RedirectToAction("ViewPolicies");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        public ActionResult DetailsPolicies (int Id)
+        {
+            Policies policy = new Policies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("Policies/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Policies>();
+                    readTask.Wait();
+                    policy = readTask.Result;
+                }
+            }
+            return View(policy);
         }
     }
 }

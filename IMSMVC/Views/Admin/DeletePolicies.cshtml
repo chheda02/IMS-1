@@ -1,0 +1,73 @@
+﻿@model IMSMVC.Models.Policies
+
+@{
+    ViewBag.Title = "DeletePolicies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DeletePolicies</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Policies</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationInMonths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationInMonths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PremiumAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PremiumAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ViewPolicies")
+        </div>
+    }
+</div>

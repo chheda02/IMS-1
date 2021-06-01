@@ -1,0 +1,64 @@
+﻿@model IEnumerable<IMSMVC.Models.Policies>
+
+@{
+    ViewBag.Title = "ViewPolicies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ViewPolicies</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreatePolicies")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DurationInMonths)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PremiumAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurationInMonths)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PremiumAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditPolicies", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsPolicies", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeletePolicies", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
