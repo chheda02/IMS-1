@@ -1,0 +1,62 @@
+﻿@model IEnumerable<IMSMVC.Models.BuyPolicies>
+
+@{
+    ViewBag.Title = "ViewBuyPolicies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ViewBuyPolicies</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyCategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountPaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequiredDocument)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyCategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequiredDocument)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+    </tr>
+}
+
+</table>

@@ -128,12 +128,21 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyPolicies.cs" />
+    <Compile Include="Models\Complaint.cs" />
+    <Compile Include="Models\CustomerAgent.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Policies.cs" />
+    <Compile Include="Models\PoliciesCategory.cs" />
+    <Compile Include="Models\PoliciesClaim.cs" />
+    <Compile Include="Models\PoliciesTransactions.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\verify.cs" />
@@ -171,6 +180,28 @@
     <Content Include="Views\login\Index.cshtml" />
     <Content Include="Views\login\Login.cshtml" />
     <Content Include="Views\Customer\Home.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Home.cshtml" />
+    <Content Include="Views\Admin\ViewUsers.cshtml" />
+    <Content Include="Views\Admin\EditUsers.cshtml" />
+    <Content Include="Views\Admin\DeleteUsers.cshtml" />
+    <Content Include="Views\Admin\DetailsUsers.cshtml" />
+    <Content Include="Views\Admin\ViewPolicies.cshtml" />
+    <Content Include="Views\Admin\EditPolicies.cshtml" />
+    <Content Include="Views\Admin\CreatePolicies.cshtml" />
+    <Content Include="Views\Admin\DeletePolicies.cshtml" />
+    <Content Include="Views\Admin\DetailsPolicies.cshtml" />
+    <Content Include="Views\Admin\ViewFeedback.cshtml" />
+    <Content Include="Views\Admin\DeleteFeedbacks.cshtml" />
+    <Content Include="Views\Admin\ViewComplaints.cshtml" />
+    <Content Include="Views\Admin\DeleteComplaints.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Views\Shared\_LayoutAgent.cshtml" />
+    <Content Include="Views\Admin\ViewBuyPolicies.cshtml" />
+    <Content Include="Views\Admin\ViewPoliciesClaim.cshtml" />
+    <Content Include="Views\Admin\ViewPoliciesTransactions.cshtml" />
+    <Content Include="Views\Customer\DetailsPolicies.cshtml" />
+    <Content Include="Views\Customer\BuyPolicies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -180,7 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Agent\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

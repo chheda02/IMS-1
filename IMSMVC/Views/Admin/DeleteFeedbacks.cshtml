@@ -1,0 +1,49 @@
+﻿@model IMSMVC.Models.Feedback
+
+@{
+    ViewBag.Title = "DeleteFeedbacks";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DeleteFeedbacks</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ViewFeedbacks")
+        </div>
+    }
+</div>

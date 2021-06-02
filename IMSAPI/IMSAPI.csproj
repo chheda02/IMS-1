@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\AutomobileCategoriesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -112,6 +113,56 @@
       <DependentUpon>AutomobileCategoriesModel.edmx</DependentUpon>
       <LastGenOutput>AutomobileCategoriesModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\BuyPoliciesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BuyPoliciesModel.edmx</DependentUpon>
+      <LastGenOutput>BuyPoliciesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BuyPoliciesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BuyPoliciesModel.edmx</DependentUpon>
+      <LastGenOutput>BuyPoliciesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ComplaintModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ComplaintModel.edmx</DependentUpon>
+      <LastGenOutput>ComplaintModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ComplaintModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ComplaintModel.edmx</DependentUpon>
+      <LastGenOutput>ComplaintModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CustomerAgentModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomerAgentModel.edmx</DependentUpon>
+      <LastGenOutput>CustomerAgentModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CustomerAgentModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomerAgentModel.edmx</DependentUpon>
+      <LastGenOutput>CustomerAgentModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FeedbackModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FeedbackModel.edmx</DependentUpon>
+      <LastGenOutput>FeedbackModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FeedbackModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FeedbackModel.edmx</DependentUpon>
+      <LastGenOutput>FeedbackModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PoliciesClaimsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PoliciesClaimsModel.edmx</DependentUpon>
+      <LastGenOutput>PoliciesClaimsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PoliciesClaimsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PoliciesClaimsModel.edmx</DependentUpon>
+      <LastGenOutput>PoliciesClaimsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\PoliciesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PoliciesModel.edmx</DependentUpon>
@@ -121,6 +172,36 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PoliciesModel.edmx</DependentUpon>
       <LastGenOutput>PoliciesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PoliciesStatusModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PoliciesStatusModel.edmx</DependentUpon>
+      <LastGenOutput>PoliciesStatusModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PoliciesStatusModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PoliciesStatusModel.edmx</DependentUpon>
+      <LastGenOutput>PoliciesStatusModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PoliciesTransactionModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PoliciesTransactionModel.edmx</DependentUpon>
+      <LastGenOutput>PoliciesTransactionModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PoliciesTransactionModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PoliciesTransactionModel.edmx</DependentUpon>
+      <LastGenOutput>PoliciesTransactionModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PolicyCategoriesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PolicyCategoriesModel.edmx</DependentUpon>
+      <LastGenOutput>PolicyCategoriesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PolicyCategoriesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PolicyCategoriesModel.edmx</DependentUpon>
+      <LastGenOutput>PolicyCategoriesModel.cs</LastGenOutput>
     </Content>
     <Content Include="Models\RolesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -147,7 +228,15 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AutomobileCategoriesController.cs" />
+    <Compile Include="Controllers\BuyPoliciesController.cs" />
+    <Compile Include="Controllers\ComplaintsController.cs" />
+    <Compile Include="Controllers\CustomerAgentsController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
+    <Compile Include="Controllers\PoliciesClaimsController.cs" />
     <Compile Include="Controllers\PoliciesController.cs" />
+    <Compile Include="Controllers\PoliciesStatusController.cs" />
+    <Compile Include="Controllers\PoliciesTransactionsController.cs" />
+    <Compile Include="Controllers\PolicyCategoriesController.cs" />
     <Compile Include="Controllers\ROLEsController.cs" />
     <Compile Include="Controllers\USERsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,6 +260,96 @@
     <Compile Include="Models\AutomobileCategory.cs">
       <DependentUpon>AutomobileCategoriesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyPoliciesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuyPoliciesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyPoliciesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuyPoliciesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyPoliciesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuyPoliciesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyPolicy.cs">
+      <DependentUpon>BuyPoliciesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Complaint.cs">
+      <DependentUpon>ComplaintModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComplaintModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplaintModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComplaintModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplaintModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComplaintModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplaintModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerAgent.cs">
+      <DependentUpon>CustomerAgentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerAgentModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerAgentModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerAgentModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerAgentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerAgentModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerAgentModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Feedback.cs">
+      <DependentUpon>FeedbackModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedbackModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedbackModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedbackModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedbackModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedbackModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedbackModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesClaim.cs">
+      <DependentUpon>PoliciesClaimsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesClaimsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesClaimsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesClaimsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesClaimsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesClaimsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesClaimsModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\PoliciesModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,8 +365,62 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PoliciesModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PoliciesStatu.cs">
+      <DependentUpon>PoliciesStatusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesStatusModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesStatusModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesStatusModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesStatusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesStatusModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesStatusModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesTransaction.cs">
+      <DependentUpon>PoliciesTransactionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesTransactionModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesTransactionModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesTransactionModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesTransactionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliciesTransactionModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PoliciesTransactionModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Policy.cs">
       <DependentUpon>PoliciesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PolicyCategoriesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolicyCategoriesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PolicyCategoriesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolicyCategoriesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PolicyCategoriesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolicyCategoriesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PolicyCategory.cs">
+      <DependentUpon>PolicyCategoriesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ROLE.cs">
       <DependentUpon>RolesModel.tt</DependentUpon>
@@ -256,7 +489,72 @@
     <Content Include="Models\PoliciesModel.edmx.diagram">
       <DependentUpon>PoliciesModel.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\CustomerAgentModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CustomerAgentModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CustomerAgentModel.edmx.diagram">
+      <DependentUpon>CustomerAgentModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\FeedbackModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FeedbackModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FeedbackModel.edmx.diagram">
+      <DependentUpon>FeedbackModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ComplaintModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ComplaintModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ComplaintModel.edmx.diagram">
+      <DependentUpon>ComplaintModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\PolicyCategoriesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PolicyCategoriesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PolicyCategoriesModel.edmx.diagram">
+      <DependentUpon>PolicyCategoriesModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\BuyPoliciesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BuyPoliciesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BuyPoliciesModel.edmx.diagram">
+      <DependentUpon>BuyPoliciesModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\PoliciesStatusModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PoliciesStatusModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PoliciesStatusModel.edmx.diagram">
+      <DependentUpon>PoliciesStatusModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\PoliciesClaimsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PoliciesClaimsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PoliciesClaimsModel.edmx.diagram">
+      <DependentUpon>PoliciesClaimsModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\PoliciesTransactionModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PoliciesTransactionModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PoliciesTransactionModel.edmx.diagram">
+      <DependentUpon>PoliciesTransactionModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\PoliciesStatus\Create.cshtml" />
+    <Content Include="Views\PoliciesStatus\Delete.cshtml" />
+    <Content Include="Views\PoliciesStatus\Details.cshtml" />
+    <Content Include="Views\PoliciesStatus\Edit.cshtml" />
+    <Content Include="Views\PoliciesStatus\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -266,6 +564,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
+    <Folder Include="Views\PoliciesClaims\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

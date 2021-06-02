@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<IMSMVC.Models.Policies>
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "ViewPolicies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Home</h2>
+<h2>ViewPolicies</h2>
 
+<p>
+    @Html.ActionLink("Create New", "CreatePolicies")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -50,7 +54,9 @@
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
-            @Html.ActionLink("Buy", "DetailsPolicies", new { Id=item.Id })
+            @Html.ActionLink("Edit", "EditPolicies", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsPolicies", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeletePolicies", new { id=item.Id })
         </td>
     </tr>
 }
