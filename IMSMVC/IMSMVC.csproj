@@ -202,6 +202,8 @@
     <Content Include="Views\Admin\ViewPoliciesTransactions.cshtml" />
     <Content Include="Views\Customer\DetailsPolicies.cshtml" />
     <Content Include="Views\Customer\BuyPolicies.cshtml" />
+    <Content Include="Views\Customer\GiveFeedback.cshtml" />
+    <Content Include="Views\Customer\GiveComplaints.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

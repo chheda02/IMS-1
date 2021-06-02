@@ -93,5 +93,58 @@ namespace IMSMVC.Controllers
                 }
             }
         }
+        [HttpGet]
+        public ActionResult GiveFeedback()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GiveFeedback(Feedback feedback)
+        {
+            feedback.CreatedDate = DateTime.Now; ;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("Feedbacks", feedback);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Home", "Customer", new { Id = (int)Session["UserId"] });
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult GiveComplaints()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GiveComplaints(Complaint complaints)
+        {
+            complaints.CreatedDate = DateTime.Now;
+            complaints.UserId = (int)Session["UserId"];
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("Complaints", complaints);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Home", "Customer", new { Id = (int)Session["UserId"] });
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
     }
 }

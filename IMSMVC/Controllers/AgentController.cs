@@ -9,8 +9,9 @@ namespace IMSMVC.Controllers
     public class AgentController : Controller
     {
         // GET: Agent
-        public ActionResult Index()
+        public ActionResult Home(int Id)
         {
+            Session["UserId"] = Id;
             return View();
         }
     }
