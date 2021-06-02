@@ -1,58 +1,80 @@
 ﻿@model IEnumerable<IMSMVC.Models.Policies>
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Dashboard";
 }
 
-<h2>Home</h2>
+<div class="border border-primary rounded shadow mt-4 mx-4 p-3">
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DurationInMonths)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PremiumAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th></th>
-    </tr>
+    <table id="table" class="table table-hover rounded table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DurationInMonths)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PremiumAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DurationInMonths)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PremiumAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Buy", "DetailsPolicies", new { Id=item.Id })
-        </td>
-    </tr>
-}
+        <tbody>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationInMonths)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PremiumAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Buy", "DetailsPolicies", new { Id = item.Id }, new { @class = "btn btn-success btn-block" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "order": [[5, "desc"]],
+            @*"scrollY": '30vh',
+            "scrollCollapse": true,*@
+            "pagingType": "full",
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        });
+    });
+</script>
