@@ -140,6 +140,8 @@
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Policies.cs" />
+    <Compile Include="Models\PoliciesClaim.cs" />
+    <Compile Include="Models\PoliciesTransactions.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\verify.cs" />
@@ -194,6 +196,9 @@
     <Content Include="Views\Admin\DeleteComplaints.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Shared\_LayoutAgent.cshtml" />
+    <Content Include="Views\Admin\ViewBuyPolicies.cshtml" />
+    <Content Include="Views\Admin\ViewPoliciesClaim.cshtml" />
+    <Content Include="Views\Admin\ViewPoliciesTransactions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

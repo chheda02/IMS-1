@@ -481,6 +481,98 @@ namespace IMSMVC.Controllers
                 }
             }
         }
-        public ActionResult View
+        public ActionResult ViewBuyPolicies()
+        {
+            IEnumerable<BuyPolicies> buyPolicies = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("BuyPolicies");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<BuyPolicies>>();
+                    readTask.Wait();
+                    buyPolicies = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    buyPolicies = Enumerable.Empty<BuyPolicies>();
+                }
+
+                return View(buyPolicies);
+            }
+        }
+        public ActionResult ViewPoliciesClaim()
+        {
+            IEnumerable<PoliciesClaim> policiesClaims = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("PoliciesClaims");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<PoliciesClaim>>();
+                    readTask.Wait();
+                    policiesClaims = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    policiesClaims = Enumerable.Empty<PoliciesClaim>();
+                }
+
+                return View(policiesClaims);
+            }
+        }
+        public ActionResult ViewPoliciesTransactions()
+        {
+            IEnumerable<PoliciesTransactions> policiesTransactions = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("PoliciesTransactions");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<PoliciesTransactions>>();
+                    readTask.Wait();
+                    policiesTransactions = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    policiesTransactions = Enumerable.Empty<PoliciesTransactions>();
+                }
+
+                return View(policiesTransactions);
+            }
+        }
     }
 }
