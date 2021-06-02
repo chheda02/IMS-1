@@ -11,8 +11,9 @@ namespace IMSMVC.Controllers
     public class CustomerController : Controller
     {
         // GET: Customer
-        public ActionResult Home()
+        public ActionResult Home(int Id)
         {
+            Session["UserId"] = Id;
             IEnumerable<Policies> policy = null;
 
             using (var client = new HttpClient())
@@ -42,14 +43,13 @@ namespace IMSMVC.Controllers
                 return View(policy);
             }
         }
-        [HttpGet]
-        public ActionResult BuyPolicies()
+        public ActionResult DetailsPolicies(int Id)
         {
             Policies policy = new Policies();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54109/api/");
-                var responseTask = client.GetAsync("Policies/" + policy.Id);
+                var responseTask = client.GetAsync("Policies/" + Id);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -59,12 +59,39 @@ namespace IMSMVC.Controllers
                     policy = readTask.Result;
                 }
             }
+            Session["Policy"] = policy;
             return View(policy);
         }
-        [HttpPost]
-        public ActionResult BuyPolicies(Policies policy)
+        [HttpGet]
+        public ActionResult BuyPolicies(int Id)
         {
-            return View();
+            return View();   
+        }
+        [HttpPost]
+        public ActionResult BuyPolicies(BuyPolicies buypolicy)
+        {
+            buypolicy.UserId = (int)Session["UserId"];
+            Policies policy = (Policies)Session["Policy"];
+            buypolicy.PolicyId = policy.Id;
+            buypolicy.PolicyCategoryId = policy.CategoryId;
+            buypolicy.CreatedDate = DateTime.Now;
+            buypolicy.UpdatedDate = DateTime.Now;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("BuyPolicies", buypolicy);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Home", "Customer", new { Id = buypolicy.UserId });
+                }
+                else
+                {
+                    return View();
+                }
+            }
         }
     }
 }

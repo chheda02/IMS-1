@@ -140,6 +140,7 @@
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Policies.cs" />
+    <Compile Include="Models\PoliciesCategory.cs" />
     <Compile Include="Models\PoliciesClaim.cs" />
     <Compile Include="Models\PoliciesTransactions.cs" />
     <Compile Include="Models\Role.cs" />
@@ -199,6 +200,8 @@
     <Content Include="Views\Admin\ViewBuyPolicies.cshtml" />
     <Content Include="Views\Admin\ViewPoliciesClaim.cshtml" />
     <Content Include="Views\Admin\ViewPoliciesTransactions.cshtml" />
+    <Content Include="Views\Customer\DetailsPolicies.cshtml" />
+    <Content Include="Views\Customer\BuyPolicies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

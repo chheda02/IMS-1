@@ -6,9 +6,6 @@
 
 <h2>Home</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
-            @Html.ActionLink("Buy", "BuyPolicies", new { id=item.Id })
+            @Html.ActionLink("Buy", "DetailsPolicies", new { Id=item.Id })
         </td>
     </tr>
 }
