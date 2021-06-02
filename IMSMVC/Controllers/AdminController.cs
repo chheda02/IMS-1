@@ -481,5 +481,6 @@ namespace IMSMVC.Controllers
                 }
             }
         }
+        public ActionResult View
     }
 }
