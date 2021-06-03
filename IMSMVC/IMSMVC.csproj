@@ -204,6 +204,9 @@
     <Content Include="Views\Customer\BuyPolicies.cshtml" />
     <Content Include="Views\Customer\GiveFeedback.cshtml" />
     <Content Include="Views\Customer\GiveComplaints.cshtml" />
+    <Content Include="Views\Agent\GiveFeedback.cshtml" />
+    <Content Include="Views\Agent\GiveComplaints.cshtml" />
+    <Content Include="Views\Customer\ViewBuyPolicies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,7 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Agent\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

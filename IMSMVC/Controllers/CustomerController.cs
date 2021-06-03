@@ -146,5 +146,43 @@ namespace IMSMVC.Controllers
                 }
             }
         }
+        public ActionResult ViewBuyPolicies()
+        {
+            IEnumerable<BuyPolicies> buypolicy = null;
+            List<BuyPolicies> buypolicy1 = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("BuyPolicies");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<BuyPolicies>>();
+                    readTask.Wait();
+                    buypolicy = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    buypolicy = Enumerable.Empty<BuyPolicies>();
+                }
+                foreach(var items in buypolicy)
+                {
+                    if(items.UserId==(int)Session["UserId"])
+                    {
+                        buypolicy1.Add(items);
+                    }
+                }
+                return View(buypolicy1);
+            }
+        }
     }
 }
