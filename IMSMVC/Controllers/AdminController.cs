@@ -11,6 +11,7 @@ namespace IMSMVC.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+
         public ActionResult Home()
         {
             IEnumerable<BuyPolicies> policy = null;
