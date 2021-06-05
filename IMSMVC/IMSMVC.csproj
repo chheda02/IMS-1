@@ -209,8 +209,20 @@
     <Content Include="Views\Admin\ViewPoliciesTransactions.cshtml" />
     <Content Include="Views\Customer\DetailsPolicies.cshtml" />
     <Content Include="Views\Customer\BuyPolicies.cshtml" />
+    <Content Include="Views\Customer\GiveFeedback.cshtml" />
+    <Content Include="Views\Customer\GiveComplaints.cshtml" />
+    <Content Include="Views\Agent\GiveFeedback.cshtml" />
+    <Content Include="Views\Agent\GiveComplaints.cshtml" />
+    <Content Include="Views\Customer\ViewBuyPolicies.cshtml" />
+    <Content Include="Views\Admin\ViewCustomerAgents.cshtml" />
+    <Content Include="Views\Admin\EditCustomerAgents.cshtml" />
+    <Content Include="Views\Admin\DeleteCustomerAgents.cshtml" />
+    <Content Include="Views\Admin\DetailsCustomerAgents.cshtml" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Views\Agent\ViewBuyPoliocies.cshtml" />
+    <Content Include="Views\Agent\ViewPoliciesClaim.cshtml" />
+    <Content Include="Views\Agent\ViewPoliciesTransactions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -220,7 +232,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Agent\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

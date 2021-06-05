@@ -11,6 +11,7 @@ namespace IMSMVC.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+
         public ActionResult Home()
         {
             IEnumerable<BuyPolicies> policy = null;
@@ -574,5 +575,139 @@ namespace IMSMVC.Controllers
                 return View(policiesTransactions);
             }
         }
+        public ActionResult ViewCustomerAgents()
+        {
+            IEnumerable<CustomerAgent> customerAgents = null;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("CustomerAgents");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<CustomerAgent>>();
+                    readTask.Wait();
+                    customerAgents = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    customerAgents = Enumerable.Empty<CustomerAgent>();
+                }
+
+                return View(customerAgents);
+            }
+        }
+        [HttpGet]
+        public ActionResult EditCustomerAgents(int Id)
+        {
+            CustomerAgent customerAgent = new CustomerAgent();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("CustomerAgents/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<CustomerAgent>();
+                    readTask.Wait();
+                    customerAgent = readTask.Result;
+                }
+            }
+            return View(customerAgent);
+        }
+        [HttpPost]
+        public ActionResult EditCustomerAgents(CustomerAgent customerAgent)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.PutAsJsonAsync("CustomerAgents/" + customerAgent.Id, customerAgent);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ViewCustomerAgents", "Admin");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult DeleteCustomerAgents(int Id)
+        {
+            CustomerAgent customerAgent = new CustomerAgent();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("CustomerAgents/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<CustomerAgent>();
+                    readTask.Wait();
+                    customerAgent = readTask.Result;
+                }
+            }
+            return View(customerAgent);
+        }
+        [HttpPost]
+        public ActionResult DeleteCustomerAgents(CustomerAgent customerAgent)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.DeleteAsync("CustomerAgents/" + customerAgent.Id);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<CustomerAgent>();
+                    readTask.Wait();
+
+                    return RedirectToAction("ViewCustomerAgents");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult DetailsCustomerAgents(int Id)
+        {
+            CustomerAgent customerAgent = new CustomerAgent();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("CustomerAgents/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<CustomerAgent>();
+                    readTask.Wait();
+                    customerAgent = readTask.Result;
+                }
+            }
+            return View(customerAgent);
+        }
+
     }
 }
