@@ -1,0 +1,43 @@
+﻿@model IMSMVC.Models.CustomerAgent
+
+@{
+    ViewBag.Title = "DetailsCustomerAgents";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h2>DetailsCustomerAgents</h2>
+
+<div>
+    <h4>CustomerAgent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AgentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditCustomerAgents", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ViewCustomerAgents")
+</p>

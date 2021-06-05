@@ -207,6 +207,10 @@
     <Content Include="Views\Agent\GiveFeedback.cshtml" />
     <Content Include="Views\Agent\GiveComplaints.cshtml" />
     <Content Include="Views\Customer\ViewBuyPolicies.cshtml" />
+    <Content Include="Views\Admin\ViewCustomerAgents.cshtml" />
+    <Content Include="Views\Admin\EditCustomerAgents.cshtml" />
+    <Content Include="Views\Admin\DeleteCustomerAgents.cshtml" />
+    <Content Include="Views\Admin\DetailsCustomerAgents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

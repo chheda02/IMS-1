@@ -1,0 +1,46 @@
+﻿@model IEnumerable<IMSMVC.Models.CustomerAgent>
+
+@{
+    ViewBag.Title = "ViewCustomerAgents";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h2>ViewCustomerAgents</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateCustomerAgents")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AgentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCustomerAgents", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsCustomerAgents", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteCustomerAgents", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
