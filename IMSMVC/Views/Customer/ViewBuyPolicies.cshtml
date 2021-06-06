@@ -34,29 +34,38 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PolicyId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PolicyCategoryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AmountPaid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequiredDocument)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedDate)
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PolicyId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PolicyCategoryId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AmountPaid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RequiredDocument)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UpdatedDate)
+    </td>
+    <td>
+        @if (item.UpdatedDate <= DateTime.Now)
+        {
+
+            @Html.ActionLink("Claim", "PoliceiesClaim", new { Id = item.Id })
+        }
+        @Html.ActionLink("Renew", "PoliceiesRenew", new { Id = item.Id })
+    </td>
+
+</tr>
 }
 
 </table>

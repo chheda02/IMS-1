@@ -146,10 +146,13 @@
     <Compile Include="Models\CustomerAgent.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\MakePayment.cs" />
     <Compile Include="Models\Policies.cs" />
     <Compile Include="Models\PoliciesCategory.cs" />
     <Compile Include="Models\PoliciesClaim.cs" />
     <Compile Include="Models\PoliciesTransactions.cs" />
+    <Compile Include="Models\Renew.cs" />
+    <Compile Include="Models\RenewModel.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\verify.cs" />
@@ -223,6 +226,8 @@
     <Content Include="Views\Agent\ViewBuyPoliocies.cshtml" />
     <Content Include="Views\Agent\ViewPoliciesClaim.cshtml" />
     <Content Include="Views\Agent\ViewPoliciesTransactions.cshtml" />
+    <Content Include="Views\Customer\MakePoliceiesClaim.cshtml" />
+    <Content Include="Views\Customer\RenewPolicy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
