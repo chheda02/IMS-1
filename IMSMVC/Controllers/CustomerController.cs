@@ -183,7 +183,9 @@ namespace IMSMVC.Controllers
                     //Error response received   
                     buypolicy = Enumerable.Empty<BuyPolicies>();
                 }
-                foreach(var items in buypolicy)
+                BuyPolicies policies = new BuyPolicies();
+                buypolicy1.Add(policies);
+                foreach (var items in buypolicy)
                 {
                     if(items.UserId==(int)Session["UserId"])
                     {
