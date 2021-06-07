@@ -225,6 +225,8 @@
     <Content Include="Views\Agent\ViewPoliciesTransactions.cshtml" />
     <Content Include="Views\Customer\MakePoliceiesClaim.cshtml" />
     <Content Include="Views\Customer\RenewPolicy.cshtml" />
+    <Content Include="Views\Admin\CreateCustomerAgents.cshtml" />
+    <Content Include="Views\Agent\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
