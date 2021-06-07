@@ -216,7 +216,7 @@ namespace IMSMVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult MakePoliceiesClaim(PoliciesClaim policiesClaim)
+        public ActionResult MakePoliciesClaim(PoliciesClaim policiesClaim)
         {
             policiesClaim.CreatedDate = DateTime.Now;
             BuyPolicies buyPolicies = (BuyPolicies)Session["PoliciesClaim"];
