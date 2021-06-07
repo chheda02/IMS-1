@@ -314,5 +314,9 @@ namespace IMSMVC.Controllers
                 }
             }
         }
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

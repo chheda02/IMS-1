@@ -709,6 +709,9 @@ namespace IMSMVC.Controllers
             }
             return View(customerAgent);
         }
-
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

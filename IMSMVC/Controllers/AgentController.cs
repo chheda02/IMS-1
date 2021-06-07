@@ -305,5 +305,9 @@ namespace IMSMVC.Controllers
             }
             return View(policiesTransactions1);
         }
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Login");
+        }
     }
 }
