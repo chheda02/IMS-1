@@ -5,69 +5,72 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>DeletePolicies</h2>
+<div class="card border-primary mx-auto mb-3 shadow mt-5" style="max-width: 20rem;">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Policies</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+    <div class="card-header">
+        <h4>Delete Policy</h4>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+    <div class="card-body mx-auto">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CategoryId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DurationInMonths)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DurationInMonths)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DurationInMonths)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PremiumAmount)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DurationInMonths)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PremiumAmount)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PremiumAmount)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PremiumAmount)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-outline-primary btn-block" /> |
-            @Html.ActionLink("Back to List", "ViewPolicies")
-        </div>
-    }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-danger btn-block" /> |
+                @Html.ActionLink("Back to List", "ViewPolicies")
+            </div>
+        }
+    </div>
 </div>

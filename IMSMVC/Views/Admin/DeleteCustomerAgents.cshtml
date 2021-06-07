@@ -5,45 +5,48 @@
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
-<h2>DeleteCustomerAgents</h2>
+<div class="card border-primary mx-auto mb-3 shadow mt-5" style="max-width: 20rem;">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>CustomerAgent</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AgentId)
-        </dt>
+    <div class="card-header">
+        <h4>Customer Agent</h4>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AgentId)
-        </dd>
+    <div class="card-body mx-auto">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AgentId)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AgentId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-outline-primary btn-block" /> |
-            @Html.ActionLink("Back to List", "CustomerAgents")
-        </div>
-    }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-danger btn-block" />
+                @Html.ActionLink("Back to List", "ViewCustomerAgents")
+            </div>
+        }
+    </div>
 </div>
