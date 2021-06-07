@@ -542,6 +542,7 @@ namespace IMSMVC.Controllers
                 }
 
                 return View(policiesClaims);
+
             }
         }
         public ActionResult ViewPoliciesTransactions()
