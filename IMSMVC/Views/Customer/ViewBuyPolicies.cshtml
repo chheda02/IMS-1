@@ -62,12 +62,12 @@
                         @Html.DisplayFor(modelItem => item.UpdatedDate)
                     </td>
                     <td>
-                        @if (item.UpdatedDate <= DateTime.Now)
+                        @if (item.UpdatedDate >= DateTime.Now)
                         {
 
-                            @Html.ActionLink("Claim", "PoliceiesClaim", new { Id = item.Id })
+                            @Html.ActionLink("Claim", "MakePoliciesClaim", new { Id = item.Id })
                         }
-                        @Html.ActionLink("Renew", "PoliceiesRenew", new { Id = item.Id })
+                        @Html.ActionLink("Renew", "RenewPolicy", new { Id = item.Id })
                     </td>
 
                 </tr>
