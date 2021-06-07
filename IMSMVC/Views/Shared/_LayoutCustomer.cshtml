@@ -21,7 +21,7 @@
 <body>
     <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" id="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">Insurance Management System</a>
+            <a class="navbar-brand" href="#"> <img src="https://www.balsigerinsurance.com/wp-content/uploads/2015/12/car-insurance-logo2.png" height="40px" width="40px" /> Insurance Management System</a>
             @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -39,50 +39,45 @@
                         </li>
                     </ul>
                 </div>*@
-        </div>
-    </div>
-    <div class="navbar navbar-expand navbar-fixed-top navbar-dark bg-primary" style="height:80px;">
-        @*<div class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-primary">*@
-        <div class="container">
-
-            <div class="navbar-header">
-                @Html.ActionLink("Home", "Home", new { Id = Session["UserId"] }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Feedback", "GiveFeedback", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Complaints", "GiveComplaints", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Buy Policies", "ViewBuyPolicies", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="nav navbar-nav navbar-right">
-                @Html.ActionLink("Logout", "Logout", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+            @Html.ActionLink(" ", "Logout", new { area = "" }, new { @class = "navbar-brand fa fa-sign-out justify-content-end" })
         </div>
     </div>
 
-        <div>
-            
-
-            @RenderBody()
-
+    <div class="navbar navbar-expand navbar-fixed-top navbar-dark bg-primary justify-content-center">
+        <div class="navbar-nav">
+            @Html.ActionLink("Home", "Home", new { Id = Session["UserId"] }, new { @class = "nav-link" })
+            @Html.ActionLink("Feedback", "GiveFeedback", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Complaints", "GiveComplaints", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Buy Policies", "ViewBuyPolicies", new { area = "" }, new { @class = "nav-link" })
         </div>
 
+    </div>
 
-        <div class="footer">
+    <div>
 
-            <p>&copy; @DateTime.Now.Year - Insurance Management System </p>
-        </div>
 
-        <style>
-            .footer {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                background-color: #4582ec;
-                color: oldlace;
-                text-align: center;
-                align-content: center;
-            }
-        </style>
+        @RenderBody()
+
+    </div>
+
+
+    <div class="footer">
+
+        <p>&copy; @DateTime.Now.Year - Insurance Management System </p>
+    </div>
+
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #4582ec;
+            color: oldlace;
+            text-align: center;
+            align-content: center;
+        }
+    </style>
 </body>
 
 </html>

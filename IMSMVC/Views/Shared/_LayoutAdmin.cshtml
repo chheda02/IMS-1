@@ -21,45 +21,38 @@
 <body>
     <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" id="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">Insurance Management System</a>
-            @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand" href="#"> <img src="https://www.balsigerinsurance.com/wp-content/uploads/2015/12/car-insurance-logo2.png" height="40px" width="40px" /> Insurance Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li id="1" class="nav-item">
-                            <a class="nav-link" href="../">
-                                L0.ogin
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li id="2" class="nav-item">
-                            <a class="nav-link" href="../Register">Register</a>
-                        </li>
-                    </ul>
-                </div>*@
+            @*<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li id="1" class="nav-item">
+                        @Html.ActionLink("Home", "Home", new { Id = Session["UserId"] }, new { @class = "nav-link" })
+                    </li>
+                    <li id="2" class="nav-item">
+                        @Html.ActionLink("User Modification", "ViewUsers", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                </ul>
+            </div>*@
+            @Html.ActionLink(" ", "Logout", new { area = "" }, new { @class = "navbar-brand fa fa-sign-out justify-content-end" })
+
         </div>
     </div>
-    <div class="navbar navbar-expand navbar-fixed-top navbar-dark bg-primary" style="height:80px;">
-        @*<div class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-primary">*@
-        <div class="container">
 
-            <div class="navbar-header">
-                @Html.ActionLink("Home", "Home", new { Id = Session["UserId"] }, new { @class = "navbar-brand" })
-                @Html.ActionLink("User Modification", "ViewUsers", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Policies Modification", "ViewPolicies", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Feedback", "ViewFeedbacks", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Complaints", "ViewComplaints", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Policies Claim", "ViewPoliciesClaim", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Customer Agents", "ViewCustomerAgents", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Policies Transactions", "ViewPoliciesTransactions", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            
-            <div class="nav navbar-nav navbar-right">
-                @Html.ActionLink("Logout", "Logout", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+    <div class="navbar navbar-expand navbar-fixed-top navbar-dark bg-primary justify-content-center">
+        <div class="navbar-nav">
+            @Html.ActionLink("Home", "Home", new { Id = Session["UserId"] }, new { @class = "nav-link" })
+            @Html.ActionLink("User Modification", "ViewUsers", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Policies Modification", "ViewPolicies", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Feedback", "ViewFeedbacks", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Complaints", "ViewComplaints", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Policies Claim", "ViewPoliciesClaim", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Customer Agents", "ViewCustomerAgents", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Policies Transactions", "ViewPoliciesTransactions", new { area = "" }, new { @class = "nav-link" })
         </div>
+
     </div>
     <div>
 
