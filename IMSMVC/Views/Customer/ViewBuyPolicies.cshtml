@@ -65,9 +65,9 @@
                         @if (item.UpdatedDate >= DateTime.Now)
                         {
 
-                            @Html.ActionLink("Claim", "MakePoliciesClaim", new { Id = item.Id })
+                            @Html.ActionLink("Claim", "MakePoliciesClaim", new { Id = item.Id }, new { @class = "btn btn-dark btn-block" })
                         }
-                        @Html.ActionLink("Renew", "RenewPolicy", new { Id = item.Id })
+                        @Html.ActionLink("Renew", "RenewPolicy", new { Id = item.Id }, new { @class = "btn btn-success btn-block" })
                     </td>
 
                 </tr>
