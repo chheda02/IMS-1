@@ -608,6 +608,33 @@ namespace IMSMVC.Controllers
             }
         }
         [HttpGet]
+        public ActionResult CreateCustomerAgents()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateCustomerAgents(CustomerAgent customerAgent)
+        {
+            DateTime currentDateTime = DateTime.Now;
+            customerAgent.CreatedDate = currentDateTime;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("CustomerAgents", customerAgent);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ViewCustomerAgents", "Admin");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
         public ActionResult EditCustomerAgents(int Id)
         {
             CustomerAgent customerAgent = new CustomerAgent();
@@ -709,6 +736,9 @@ namespace IMSMVC.Controllers
             }
             return View(customerAgent);
         }
-
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

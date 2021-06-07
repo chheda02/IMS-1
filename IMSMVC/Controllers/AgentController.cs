@@ -14,7 +14,79 @@ namespace IMSMVC.Controllers
         public ActionResult Home(int Id)
         {
             Session["UserId"] = Id;
-            return View();
+            IEnumerable<CustomerAgent> customerAgents = null;
+            int[] customerId = new int[100];
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("CustomerAgents");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<CustomerAgent>>();
+                    readTask.Wait();
+                    customerAgents = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    customerAgents = Enumerable.Empty<CustomerAgent>();
+                }
+            }
+            int i = 0;
+            foreach (CustomerAgent item in customerAgents)
+            {
+                if (item.AgentId == (int)Session["UserId"])
+                {
+                    customerId[i] = (int)item.UserId;
+                    i++;
+                }
+            }
+            IEnumerable<User> users = null;
+            List<User> users1 = new List<User>();
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("USERS");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<User>>();
+                    readTask.Wait();
+                    users = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    users = Enumerable.Empty<User>();
+                }
+            }
+            foreach (User item in users)
+            {
+                for (int j = 0; j < customerId.Length; j++)
+                {
+                    if (item.Id == customerId[j])
+                    {
+                        users1.Add(item);
+                    }
+                }
+            }
+            return View(users1);
         }
         [HttpGet]
         public ActionResult GiveFeedback()
@@ -73,7 +145,7 @@ namespace IMSMVC.Controllers
         public ActionResult ViewBuyPoliocies()
         {
             IEnumerable<CustomerAgent> customerAgents = null;
-            int[] customerId = new int[customerAgents.Count()];
+            int[] customerId = new int[100];
 
             using (var client = new HttpClient())
             {
@@ -109,7 +181,7 @@ namespace IMSMVC.Controllers
                 }
             }
             IEnumerable<BuyPolicies> buyPolicies = null;
-            List<BuyPolicies> buyPolicies1 = null;
+            List<BuyPolicies> buyPolicies1 = new List<BuyPolicies>();
 
             using (var client = new HttpClient())
             {
@@ -152,7 +224,7 @@ namespace IMSMVC.Controllers
         public ActionResult ViewPoliciesClaim()
         {
             IEnumerable<CustomerAgent> customerAgents = null;
-            int[] customerId = new int[customerAgents.Count()];
+            int[] customerId = new int[100];
 
             using (var client = new HttpClient())
             {
@@ -188,7 +260,7 @@ namespace IMSMVC.Controllers
                 }
             }
             IEnumerable<PoliciesClaim> policiesClaims = null;
-            List<PoliciesClaim> policiesClaims1 = null;
+            List<PoliciesClaim> policiesClaims1 = new List<PoliciesClaim>();
 
             using (var client = new HttpClient())
             {
@@ -231,7 +303,7 @@ namespace IMSMVC.Controllers
         public ActionResult ViewPoliciesTransactions()
         {
             IEnumerable<CustomerAgent> customerAgents = null;
-            int[] customerId = new int[customerAgents.Count()];
+            int[] customerId = new int[100];
 
             using (var client = new HttpClient())
             {
@@ -267,7 +339,7 @@ namespace IMSMVC.Controllers
                 }
             }
             IEnumerable<PoliciesTransactions> policiesTransactions = null;
-            List<PoliciesTransactions> policiesTransactions1 = null;
+            List<PoliciesTransactions> policiesTransactions1 = new List<PoliciesTransactions>();
 
             using (var client = new HttpClient())
             {
@@ -304,6 +376,10 @@ namespace IMSMVC.Controllers
                 }
             }
             return View(policiesTransactions1);
+        }
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Login");
         }
     }
 }

@@ -1,25 +1,22 @@
-﻿@model IEnumerable<IMSMVC.Models.CustomerAgent>
+﻿@model IEnumerable<IMSMVC.Models.Feedback>
 
 @{
-    ViewBag.Title = "ViewCustomerAgents";
+    ViewBag.Title = "ViewFeedback";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ViewCustomerAgents</h2>
+<h2>ViewFeedback</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateCustomerAgents")
-</p>
 <div class="border border-primary rounded shadow mt-4 mx-4 p-3">
 
     <table id="table" class="table table-hover rounded table-bordered">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.AgentId)
+                    @Html.DisplayNameFor(model => model.Email)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UserId)
+                    @Html.DisplayNameFor(model => model.Message)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.CreatedDate)
@@ -28,23 +25,20 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AgentId)
+                        @Html.DisplayFor(modelItem => item.Email)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.UserId)
+                        @Html.DisplayFor(modelItem => item.Message)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "EditCustomerAgents", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "DetailsCustomerAgents", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "DeleteCustomerAgents", new { id = item.Id })
+                        @Html.ActionLink("Delete", "DeleteFeedbacks", new { Id = item.Id })
                     </td>
                 </tr>
             }

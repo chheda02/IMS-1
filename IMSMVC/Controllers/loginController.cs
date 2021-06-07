@@ -215,11 +215,11 @@ namespace IMSMVC.Controllers
                 }
                 else if (users.RoleId == 2)
                 {
-                    return RedirectToAction("Home", "Agent");
+                    return RedirectToAction("Home", "Agent", new { Id = users.Id });
                 }
                 else if (users.RoleId == 3)
                 {
-                    return RedirectToAction("Home", "Admin");
+                    return RedirectToAction("Home", "Admin", new { Id = users.Id });
                 }
             }
             else

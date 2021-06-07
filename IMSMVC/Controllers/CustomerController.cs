@@ -68,15 +68,17 @@ namespace IMSMVC.Controllers
             Policies policy = (Policies)Session["Policy"];
             buypolicy.PolicyId = policy.Id;
             buypolicy.PolicyCategoryId = policy.CategoryId;
+            buypolicy.AmountPaid = policy.PremiumAmount;
+            buypolicy.RequiredDocument = "Aadhar";
             buypolicy.CreatedDate = DateTime.Now;
             buypolicy.UpdatedDate = DateTime.Now.AddMonths((int)policy.DurationInMonths);
-            using (var client = new HttpClient())
+            using (var client1 = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:54109/api/");
-                var responseTask = client.PostAsJsonAsync("BuyPolicies", buypolicy);
-                responseTask.Wait();
+                client1.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask1 = client1.PostAsJsonAsync("BuyPolicies", buypolicy);
+                responseTask1.Wait();
 
-                var result = responseTask.Result;
+                var result = responseTask1.Result;
             }
             PoliciesTransactions policiesTransactions = new PoliciesTransactions();
             policiesTransactions.UserId = (int)Session["UserId"];
@@ -158,7 +160,7 @@ namespace IMSMVC.Controllers
         public ActionResult ViewBuyPolicies()
         {
             IEnumerable<BuyPolicies> buypolicy = null;
-            List<BuyPolicies> buypolicy1 = null;
+            List<BuyPolicies> buypolicy1 = new List<BuyPolicies>();
 
             using (var client = new HttpClient())
             {
@@ -183,7 +185,7 @@ namespace IMSMVC.Controllers
                     //Error response received   
                     buypolicy = Enumerable.Empty<BuyPolicies>();
                 }
-                foreach(var items in buypolicy)
+                foreach (var items in buypolicy)
                 {
                     if(items.UserId==(int)Session["UserId"])
                     {
@@ -311,6 +313,10 @@ namespace IMSMVC.Controllers
                     return View();
                 }
             }
+        }
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Login");
         }
     }
 }
