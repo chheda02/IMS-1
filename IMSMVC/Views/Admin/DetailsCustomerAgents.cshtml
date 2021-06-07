@@ -5,39 +5,42 @@
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
-<h2>DetailsCustomerAgents</h2>
+<div class="card border-primary mx-auto mb-3 shadow mt-5" style="max-width: 20rem;">
 
-<div>
-    <h4>CustomerAgent</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AgentId)
-        </dt>
+    <div class="card-header">
+        <h4>Details Customers and agents</h4>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AgentId)
-        </dd>
+    <div class="card-body mx-auto">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AgentId)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AgentId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditCustomerAgents", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "ViewCustomerAgents")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "EditCustomerAgents", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "ViewCustomerAgents")
-</p>
