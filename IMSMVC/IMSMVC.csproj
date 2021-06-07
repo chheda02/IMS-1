@@ -223,10 +223,10 @@
     <Content Include="Views\Agent\ViewBuyPoliocies.cshtml" />
     <Content Include="Views\Agent\ViewPoliciesClaim.cshtml" />
     <Content Include="Views\Agent\ViewPoliciesTransactions.cshtml" />
-    <Content Include="Views\Customer\MakePoliceiesClaim.cshtml" />
     <Content Include="Views\Customer\RenewPolicy.cshtml" />
     <Content Include="Views\Admin\CreateCustomerAgents.cshtml" />
     <Content Include="Views\Agent\Home.cshtml" />
+    <Content Include="Views\Customer\MakePoliciesClaim.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
