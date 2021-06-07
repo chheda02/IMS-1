@@ -41,7 +41,24 @@
                 </div>*@
         </div>
     </div>
+    <div class="navbar navbar-expand navbar-fixed-top navbar-dark bg-primary" style="height:80px;">
+        @*<div class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-primary">*@
+        <div class="container">
 
+            <div class="navbar-header">
+                @Html.ActionLink("Home", "Home", new { Id = Session["UserId"] }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Feedback", "GiveFeedback", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Complaints", "GiveComplaints", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Buy Policies", "ViewBuyPolicies", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Policies Claim", "ViewPoliciesClaim", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Policies Transactions", "ViewPoliciesTransactions", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <div class="nav navbar-nav navbar-right">
+                @Html.ActionLink("Logout", "Logout", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+        </div>
+    </div>
     <div>
 
         @RenderBody()

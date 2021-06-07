@@ -62,12 +62,6 @@ namespace IMSMVC.Controllers
             Session["Policy"] = policy;
             return View(policy);
         }
-        [HttpGet]
-        public ActionResult BuyPolicies(int Id)
-        {
-            return View();   
-        }
-        [HttpPost]
         public ActionResult BuyPolicies(BuyPolicies buypolicy)
         {
             buypolicy.UserId = (int)Session["UserId"];
@@ -75,11 +69,25 @@ namespace IMSMVC.Controllers
             buypolicy.PolicyId = policy.Id;
             buypolicy.PolicyCategoryId = policy.CategoryId;
             buypolicy.CreatedDate = DateTime.Now;
-            buypolicy.UpdatedDate = DateTime.Now;
+            buypolicy.UpdatedDate = DateTime.Now.AddMonths((int)policy.DurationInMonths);
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54109/api/");
                 var responseTask = client.PostAsJsonAsync("BuyPolicies", buypolicy);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+            }
+            PoliciesTransactions policiesTransactions = new PoliciesTransactions();
+            policiesTransactions.UserId = (int)Session["UserId"];
+            policiesTransactions.PolicyId = policy.Id;
+            policiesTransactions.Amount = policy.PremiumAmount;
+            policiesTransactions.ActualPaymentDate = DateTime.Now;
+            policiesTransactions.ActualPremiumDate = DateTime.Now;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("PoliciesTransactions", policiesTransactions);
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -92,6 +100,7 @@ namespace IMSMVC.Controllers
                     return View();
                 }
             }
+
         }
         [HttpGet]
         public ActionResult GiveFeedback()
@@ -182,6 +191,125 @@ namespace IMSMVC.Controllers
                     }
                 }
                 return View(buypolicy1);
+            }
+        }
+        [HttpGet]
+        public ActionResult MakePoliciesClaim(int Id)
+        {
+            BuyPolicies buyPolicies = new BuyPolicies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("BuyPolicies/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<BuyPolicies>();
+                    readTask.Wait();
+                    buyPolicies = readTask.Result;
+                }
+            }
+            Session["PoliciesClaim"] = buyPolicies;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MakePoliceiesClaim(PoliciesClaim policiesClaim)
+        {
+            policiesClaim.CreatedDate = DateTime.Now;
+            BuyPolicies buyPolicies = (BuyPolicies)Session["PoliciesClaim"];
+            policiesClaim.PolicyId = buyPolicies.PolicyId;
+            policiesClaim.UserId = (int)Session["UserId"];
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("PoliciesClaims", policiesClaim);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Home", "Customer", new { Id = (int)Session["UserId"] });
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult RenewPolicy(int Id)
+        {
+            BuyPolicies buyPolicies = new BuyPolicies();
+            Session["buyPoliciesId"] = Id;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("BuyPolicies/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<BuyPolicies>();
+                    readTask.Wait();
+                    buyPolicies = readTask.Result;
+                }
+            }
+            PoliciesTransactions policiesTransactions = new PoliciesTransactions();
+            policiesTransactions.PolicyId = buyPolicies.PolicyId;
+            policiesTransactions.Amount = buyPolicies.AmountPaid;
+            policiesTransactions.ActualPremiumDate = buyPolicies.UpdatedDate;
+            return View(policiesTransactions); 
+        }
+        [HttpPost]
+        public ActionResult RenewPolicy(PoliciesTransactions policiesTransactions)
+        {
+            int buyPoliciesId = (int)Session["buyPoliciesId"];
+            BuyPolicies buyPolicies = new BuyPolicies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("BuyPolicies/" + buyPoliciesId);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<BuyPolicies>();
+                    readTask.Wait();
+                    buyPolicies = readTask.Result;
+                }
+            }
+            Policies policy = new Policies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("Policies/" + buyPolicies.PolicyId);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Policies>();
+                    readTask.Wait();
+                    policy = readTask.Result;
+                }
+            }
+            buyPolicies.UpdatedDate = DateTime.Now.AddMonths((int)policy.DurationInMonths);
+            policiesTransactions.UserId = (int)Session["UserId"];
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.PostAsJsonAsync("PoliciesTransactions", policiesTransactions);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Home", "Customer", new { Id = policiesTransactions.UserId });
+                }
+                else
+                {
+                    return View();
+                }
             }
         }
     }
