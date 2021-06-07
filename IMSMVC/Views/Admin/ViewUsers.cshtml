@@ -67,9 +67,9 @@
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "EditUsers", new { Id = item.Id }) |
-                        @Html.ActionLink("Details", "DetailsUsers", new { Id = item.Id }) |
-                        @Html.ActionLink("Delete", "DeleteUsers", new { Id = item.Id })
+                        @Html.ActionLink("Edit", "EditUsers", new { Id = item.Id }, new { @class = "btn btn-success btn-block" }) 
+                        @Html.ActionLink("Details", "DetailsUsers", new { Id = item.Id }, new { @class = "btn btn-dark btn-block" }) 
+                        @Html.ActionLink("Delete", "DeleteUsers", new { Id = item.Id }, new { @class = "btn btn-danger btn-block" })
                     </td>
                 </tr>
             }
