@@ -59,8 +59,8 @@ namespace IMSMVC.Controllers
 
             subject = "Confidential";
             body = "<br/><br/>Your password for IMS is" +
-                    "" + password +
-                    " <br/><br/>";
+                    "<b> " + password +
+                    "</b> <br/><br/>";
 
 
 
