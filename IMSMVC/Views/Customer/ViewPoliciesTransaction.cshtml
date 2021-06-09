@@ -1,0 +1,57 @@
+﻿@model IEnumerable<IMSMVC.Models.PoliciesTransactions>
+
+@{
+    ViewBag.Title = "ViewPoliciesTransaction";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h2>View Policies Transaction</h2>
+
+<div class="border border-primary rounded shadow mt-4 mx-4 p-3">
+
+    <table id="table" class="table table-hover rounded table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PolicyId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActualPremiumDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActualPaymentDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PolicyId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActualPremiumDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActualPaymentDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

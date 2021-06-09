@@ -43,6 +43,24 @@ namespace IMSMVC.Controllers
                 return View(policy);
             }
         }
+        public ActionResult DetailsBuyPolicies(int Id)
+        {
+            BuyPolicies buyPolicies = new BuyPolicies();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("BuyPolicies/" + Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<BuyPolicies>();
+                    readTask.Wait();
+                    buyPolicies = readTask.Result;
+                }
+            }
+            return View(buyPolicies);
+        }
         public ActionResult ViewUsers()
         {
             IEnumerable<User> users = null;

@@ -314,6 +314,44 @@ namespace IMSMVC.Controllers
                 }
             }
         }
+        public ActionResult ViewPoliciesTransaction()
+        {
+            IEnumerable<PoliciesTransactions> policiesTransactions = null;
+            List<PoliciesTransactions> policiesTransactions1 = new List<PoliciesTransactions>();
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+
+                var responseTask = client.GetAsync("PoliciesTransactions");
+                responseTask.Wait();
+
+                //To store result of web api response.   
+                var result = responseTask.Result;
+
+                //If success received   
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<PoliciesTransactions>>();
+                    readTask.Wait();
+                    policiesTransactions = readTask.Result;
+                }
+                else
+                {
+                    //Error response received   
+                    policiesTransactions = Enumerable.Empty<PoliciesTransactions>();
+                }
+            }
+            foreach (PoliciesTransactions item in policiesTransactions)
+            {
+                if (item.UserId == (int)Session["UserId"])
+                {
+                    policiesTransactions1.Add(item);
+                }
+            }
+            return View(policiesTransactions1);
+        }
         public ActionResult Logout()
         {
             return RedirectToAction("Login", "Login");

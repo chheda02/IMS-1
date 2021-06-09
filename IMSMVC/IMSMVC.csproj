@@ -116,6 +116,8 @@
     <Content Include="Content\footable.standalone.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\img1.jpg" />
+    <Content Include="Images\img2.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -227,6 +229,8 @@
     <Content Include="Views\Admin\CreateCustomerAgents.cshtml" />
     <Content Include="Views\Agent\Home.cshtml" />
     <Content Include="Views\Customer\MakePoliciesClaim.cshtml" />
+    <Content Include="Views\Admin\DetailsBuyPolicies.cshtml" />
+    <Content Include="Views\Customer\ViewPoliciesTransaction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
