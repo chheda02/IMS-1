@@ -6,17 +6,18 @@
 }
 
 <div id="SlideshowImages">
-    
-    <div><img src="~/Images/img1.jpg" height="350" width="1300" /></div>
-    <div><img src="~/Images/img2.jpg" height="350" width="1300" /></div>
-    
+
+    <div><img src="~/Images/img1.jpg" height="350" width="1450" /></div>
+    <div><img src="~/Images/img2.jpg" height="350" width="1450" /></div>
+    <div><img src="~/Images/img3.png" height="350" width="1450" /></div>
+
 
 </div>
 <style type="text/css" style="display: none !important;">
     #SlideshowImages {
         position: relative;
         width: 100%;
-        height: 450px;
+        height: 380px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
     }
 
@@ -38,7 +39,7 @@
         $("#slideshow > div:gt(0)").hide();
         setInterval(function () {
             $('#SlideshowImages > div:first').fadeOut(1000).next().fadeIn(3000).end().appendTo('#SlideshowImages');
-        }, 2000);
+        }, 4000);
     });
 </script>
 <br />

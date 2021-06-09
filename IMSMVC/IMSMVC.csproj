@@ -118,6 +118,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\img1.jpg" />
     <Content Include="Images\img2.jpg" />
+    <Content Include="Images\img3.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -231,6 +232,8 @@
     <Content Include="Views\Customer\MakePoliciesClaim.cshtml" />
     <Content Include="Views\Admin\DetailsBuyPolicies.cshtml" />
     <Content Include="Views\Customer\ViewPoliciesTransaction.cshtml" />
+    <Content Include="Views\login\forgotpassword.cshtml" />
+    <Content Include="Views\login\inetermediateforgotpassward.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

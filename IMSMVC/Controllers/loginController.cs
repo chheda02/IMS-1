@@ -47,6 +47,42 @@ namespace IMSMVC.Controllers
             })
                 smtp.Send(message);
         }
+
+        public void SendEmailFogortPassword(string EmailId, string password)
+        {
+            var fromEmail = new MailAddress("d643359@gmail.com", "IMS");
+            var toEmail = new MailAddress(EmailId);
+            var fromEmailPassword = "dummy@123"; // Replace with actual password
+
+            string subject = "";
+            string body = "";
+
+            subject = "Confidential";
+            body = "<br/><br/>Your password for IMS is" +
+                    "" + password +
+                    " <br/><br/>";
+
+
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword),
+                EnableSsl = true
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+        }
+
         public ActionResult Index()
         {
             User user1 = new User();
@@ -227,6 +263,35 @@ namespace IMSMVC.Controllers
                 ViewBag.Message = "Invalid User credentials";
                 return View();
             }
+            return View();
+        }
+        [HttpGet]
+        public ActionResult forgotpassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult forgotpassword(Login login)
+        {
+            User users = new User();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54109/api/");
+                var responseTask = client.GetAsync("USERS/" + login.Id);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<User>();
+                    readTask.Wait();
+                    users = readTask.Result;
+                }
+            }
+            SendEmailFogortPassword(users.Email, users.Password);
+            return RedirectToAction("inetermediateforgotpassward", "Login");
+        }
+        public ActionResult inetermediateforgotpassward()
+        {
             return View();
         }
     }

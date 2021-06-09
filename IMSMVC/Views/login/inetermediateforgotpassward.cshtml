@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "inetermediateforgotpassward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="height:65vh;">
+
+    <div class="card border-info mx-auto mb-3 shadow " style="max-width: 20rem; margin-top:90px">
+
+        <div class="card-header"><h4>Success</h4></div>
+
+        <div class="card-body mx-auto">
+            <p>Your password is sent to your registered email id</p>
+
+            <div class="form-group mx-auto text-center">
+                <input type="submit" value="Login" class="btn btn-outline-primary btn-block" onclick="@("window.location.href='" + @Url.Action("Login", "Login") + "'");"/>
+            </div>
+        </div>
+    </div>
+</div>
