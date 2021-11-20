@@ -96,22 +96,29 @@ namespace IMSMVC.Controllers
         [HttpPost]
         public ActionResult GiveFeedback(Feedback feedback)
         {
-            feedback.CreatedDate = DateTime.Now; ;
-            using (var client = new HttpClient())
+            if (ModelState.IsValid)
             {
-                client.BaseAddress = new Uri("http://localhost:54109/api/");
-                var responseTask = client.PostAsJsonAsync("Feedbacks", feedback);
-                responseTask.Wait();
+                feedback.CreatedDate = DateTime.Now; ;
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:54109/api/");
+                    var responseTask = client.PostAsJsonAsync("Feedbacks", feedback);
+                    responseTask.Wait();
 
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Home", "Customer", new { Id = (int)Session["UserId"] });
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Home", "Customer", new { Id = (int)Session["UserId"] });
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
-                else
-                {
-                    return View();
-                }
+            }
+            else
+            {
+                return View();
             }
         }
         [HttpGet]

@@ -272,23 +272,30 @@ namespace IMSMVC.Controllers
         [HttpPost]
         public ActionResult CreatePolicies(Policies policy)
         {
-            DateTime currentDateTime = DateTime.Now;
-            policy.CreatedDate = currentDateTime;
-            using (var client = new HttpClient())
+            if (ModelState.IsValid)
             {
-                client.BaseAddress = new Uri("http://localhost:54109/api/");
-                var responseTask = client.PostAsJsonAsync("Policies", policy);
-                responseTask.Wait();
+                DateTime currentDateTime = DateTime.Now;
+                policy.CreatedDate = currentDateTime;
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:54109/api/");
+                    var responseTask = client.PostAsJsonAsync("Policies", policy);
+                    responseTask.Wait();
 
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("ViewPolicies", "Admin");
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("ViewPolicies", "Admin");
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
-                else
-                {
-                    return View();
-                }
+            }
+            else
+            {
+                return View();
             }
         }
         [HttpGet]

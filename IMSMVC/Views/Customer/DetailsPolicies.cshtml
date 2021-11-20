@@ -5,63 +5,68 @@
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
-<h2>DetailsPolicies</h2>
+<div class="card border-primary mx-auto mb-3 shadow mt-5" style="max-width: 20rem;">
 
-<div>
-    <h4>Policies</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+    <div class="card-header">
+        <h4>Policies Details</h4>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+    <div class="card-body mx-auto">
+        
+            
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CategoryId)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DurationInMonths)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DurationInMonths)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DurationInMonths)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PremiumAmount)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DurationInMonths)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PremiumAmount)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PremiumAmount)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PremiumAmount)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Buy Policies", "BuyPolicies", new { Id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Home")
-</p>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+
+            </dl>
+        <p>
+            @Html.ActionLink("Buy Policies", "BuyPolicies", new { Id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Home", new { Id = Session["UserId"] })
+        </p>
+    </div>
+    </div>
